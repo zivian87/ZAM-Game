@@ -1,11 +1,15 @@
 require('dotenv').config(); //initialize dotenv
 const commandController = require('../controllers/commandController.js')
+const playerController = require('../controllers/playerController.js')
+
 const Discord = require('discord.js'); //import discord.js
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_EMOJIS_AND_STICKERS", "DIRECT_MESSAGES"] });
 const { builtinModules } = require('module');
 
 class discordView {
     #controller;
+    #UID;
+    #Name;
     constructor(commandController) {
         this.#controller = commandController;
     }
@@ -16,8 +20,15 @@ class discordView {
     }
     listenForInput() {
         client.on('message', msg => {
-            var response = this.retrieveMessage(msg.content);
-            this.respond(response);
+            if(msg.content.startsWith("!")){
+                var response = this.retrieveMessage(msg.content);
+                this.#UID = msg.author.id;
+                this.#Name = msg.author.username;
+                let pController = new playerController();
+                let playerData = this.getPlayerDiscordInfo();
+                pController.SaveNewPlayer(playerData);
+                this.respond(response);
+            }           
         });
     }
     retrieveMessage(message) {
@@ -27,6 +38,9 @@ class discordView {
     async respond(response) {
         const channel = await client.channels.fetch('909089980788404254');
         await channel.send(response);
+    }
+    getPlayerDiscordInfo(){
+        return { UID:this.#UID, Name:this.#Name}
     }
 }
 
