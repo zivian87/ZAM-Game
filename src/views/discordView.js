@@ -10,26 +10,34 @@ class discordView {
     #controller;
     #UID;
     #Name;
-    constructor(commandController) {
-        this.#controller = commandController;
+    constructor() {
     }
     loginMessage() {
         client.on('ready', () => {
             console.log(`Logged in as ${client.user.tag}!`);
         });
     }
-    listenForInput() {
-        client.on('message', msg => {
+    async listenForInput() {
+        client.on('message', async msg => {
             if(msg.content.startsWith("!")){
-                var response = this.retrieveMessage(msg.content);
-                this.#UID = msg.author.id;
-                this.#Name = msg.author.username;
-                let pController = new playerController();
-                let playerData = this.getPlayerDiscordInfo();
-                pController.SaveNewPlayer(playerData);
-                this.respond(response);
+                this.setPlayerDiscordInfo(msg.author.id, msg.author.username);
+                let pController = new playerController(this.#UID, this.#Name);
+                var newPlayer = await pController.newPlayer();
+                if(newPlayer)
+                {
+                    console.log("SAVING NEW PLAYER");
+                    pController.saveNewPlayer();
+                }
+                else{
+                    this.createController();
+                    var response = this.retrieveMessage(msg.content);
+                    this.respond(response);
+                }               
             }           
         });
+    }
+    createController(){
+        this.#controller = new commandController(this.#UID);
     }
     retrieveMessage(message) {
         this.#controller.assignMessage(message);
@@ -37,10 +45,17 @@ class discordView {
     }
     async respond(response) {
         const channel = await client.channels.fetch('909089980788404254');
-        await channel.send(response);
+        var message = "Something bad happened";
+        if(response)
+        {
+            message = await response;
+        }
+        console.log(message);
+        await channel.send(message);
     }
-    getPlayerDiscordInfo(){
-        return { UID:this.#UID, Name:this.#Name}
+    setPlayerDiscordInfo(discordID, discordName){
+        this.#UID = discordID;
+        this.#Name = discordName;
     }
 }
 

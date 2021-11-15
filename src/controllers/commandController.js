@@ -2,19 +2,21 @@ const command = require('../models/command.js');
 class commandController {
     #model
     #userMessage
-    constructor() {
+    #playerID
+    constructor(playerID) {
+        this.#playerID = playerID;
     }
     assignMessage(message) {
         this.#userMessage = message;
     }
     determineType() {
-        if (this.#userMessage.includes("test")) {
-            return "test";
+        if (this.#userMessage.includes("gold")) {
+            return "gold";
         }
     }
     getMessage() {
         var type = this.determineType();
-        var model = new command(this.#userMessage, type);
+        var model = new command(this.#userMessage, type, this.#playerID);
         return model.getReponse();
     }
 }

@@ -12,16 +12,31 @@ class player{
     CurrentXP;
     Currency;
     PremiumCurrency;
-    constructor(){
-        this.UID = "";
-        this.Name = "";
+    constructor(discordID, discordName){
+        this.UID = discordID;
+        this.Name = discordName;
     }
-    Insert()
+    insert()
     {
         let query = 'INSERT INTO public.players (UID, UserName) VALUES ($1,$2)';
         let params = [this.UID, this.Name];
+        let db = new database();
+        db.runQuery(query, params);
+    }
+    async checkIfNew()
+    {
+        let query = 'SELECT * FROM public.players WHERE uid = $1';
+        let params = [this.UID];
         var db = new database();
-        db.RunQuery(query, params);
+        var results = await db.fetch(query, params);
+
+        if(results.rows.length < 1){
+            console.log("I'M A NEW PLAYER")
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 

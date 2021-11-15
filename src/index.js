@@ -1,14 +1,13 @@
 
-var main = (function main(){
+var main = (async function main(){
     const commandController = require('./controllers/commandController.js')
     const playerController = require('./controllers/playerController.js')
 
     const discordView = require('./views/discordView.js');
 
-    let controller = new commandController();
     let pController = new playerController();
 
-    let view = new discordView(controller);
+    let view = new discordView();
 
     view.loginMessage();
     view.listenForInput();

@@ -2,30 +2,41 @@ const { Console } = require("console");
 const { Pool, Client } = require("pg");
 
 const credentials = {
-    user: "postgres",
-    host: "localhost",
-    database: "ZAM_Game",
-    password: "ZamZamZam52!",
-    port: 8999,
-  };
+  user: "postgres",
+  host: "localhost",
+  database: "ZAM_Game",
+  password: "ZamZamZam52!",
+  port: 8999,
+};
 
-class database{
-    #pool
-    #client
-    constructor(){
-        this.#pool = new Pool(credentials);
-        this.#client = new Client(credentials);
+class database {
+  #pool;
+  #client;
+  constructor() {
+    this.#pool = new Pool(credentials);
+    this.#client = new Client(credentials);
+  }
+  runQuery(query, params) {
+    this.#pool.connect();
+    this.#pool.query(query, params, function (err) {
+      if (err) {
+        console.log("Database operation failed.");
+        throw err;
+      }
+    });
+    this.#pool.end();
+  }
+  async fetch(query, params) {
+    this.#pool.connect();
+    try {
+      const res = await this.#pool.query(query, params);
+      this.#pool.end();
+      return res;
+    } catch (err) {
+      return err.stack;
     }
-     RunQuery(query, params){
-         this.#pool.connect();
-         this.#pool.query(query, params, function(err){
-            console.log("There was an error with the database. Please try again.")
-            console.log(err);
-        });
-        this.#pool.end();
-    }
+  }
 }
-
 
 
 // Connect with a connection pool.
@@ -40,7 +51,4 @@ async function poolDemo() {
 
 // Connect with a client.
 
-
-
-
-module.exports = database
+module.exports = database;
