@@ -1,32 +1,32 @@
 {
-  "name": "zam-game",
-  "version": "0.0.1",
-  "description": "The best Discord game ever created.",
-  "main": "index.js",
-  "scripts": {
-    "test": "run"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ZAM-Devoe/ZAM-Game.git"
-  },
-  "keywords": [
-    "discord",
-    "game",
-    "bot"
-  ],
-  "author": "ZAM-Devoe",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/ZAM-Devoe/ZAM-Game/issues"
-  },
-  "homepage": "https://github.com/ZAM-Devoe/ZAM-Game#readme",
-  "dependencies": {
-    "axios": "^0.24.0",
-    "dateformat": "^5.0.2",
-    "discord.js": "^13.3.1",
-    "dotenv": "^10.0.0",
-    "node": "^16.13.0",
-    "pg": "^8.7.1"
-  }
+    "name": "zam-game",
+    "version": "0.0.1",
+    "description": "The best Discord game ever created.",
+    "main": "index.js",
+    "scripts": {
+        "test": "run"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ZAM-Devoe/ZAM-Game.git"
+    },
+    "keywords": [
+        "discord",
+        "game",
+        "bot"
+    ],
+    "author": "ZAM-Devoe",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/ZAM-Devoe/ZAM-Game/issues"
+    },
+    "homepage": "https://github.com/ZAM-Devoe/ZAM-Game#readme",
+    "dependencies": {
+        "axios": "^0.24.0",
+        "discord.js": "^13.3.1",
+        "dotenv": "^10.0.0",
+        "node": "^16.13.0",
+        "pg": "^8.7.1",
+        "prettier": "^2.4.1"
+    }
 }

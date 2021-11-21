@@ -1,16 +1,15 @@
-
 class test {
     #testDictionary
     constructor() {
-        this.buildDictionary();
+        this.buildDictionary()
     }
 
     buildDictionary() {
-        this.#testDictionary = new Map();
-        this.#testDictionary.set(1, "Pulled from Test Dictionary");
+        this.#testDictionary = new Map()
+        this.#testDictionary.set(1, 'Pulled from Test Dictionary')
     }
-    getMessage(key){
-        return this.#testDictionary.get(key);
+    getMessage(key) {
+        return this.#testDictionary.get(key)
     }
 }
-module.exports = test;
+module.exports = test

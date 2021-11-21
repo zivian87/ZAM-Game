@@ -1,17 +1,15 @@
-
-var main = (async function main(){
+var main = (async function main() {
     const commandController = require('./controllers/commandController.js')
     const playerController = require('./controllers/playerController.js')
 
-    const discordView = require('./views/discordView.js');
+    const discordView = require('./views/discordView.js')
 
-    let pController = new playerController();
+    let pController = new playerController()
 
-    let view = new discordView();
+    let view = new discordView()
 
-    view.loginMessage();
-    view.listenForInput();
+    view.loginMessage()
+    view.listenForInput()
 
-    return main; 
-
-}()); 
+    return main
+})()
