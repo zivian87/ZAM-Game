@@ -3,8 +3,8 @@ const { Pool, Client } = require("pg");
 
 const credentials = {
   user: "postgres",
-  host: "localhost",
-  database: "ZAM_Game",
+  host: "ec2-18-191-91-23.us-east-2.compute.amazonaws.com",
+  database: "ZAM_GAME",
   password: "ZamZamZam52!",
   port: 8999,
 };
@@ -30,14 +30,15 @@ class database {
     this.#pool.connect();
     try {
       const res = await this.#pool.query(query, params);
-      this.#pool.end();
       return res;
     } catch (err) {
-      return err.stack;
+      console.log("Database connection failed.");
+      return err;
+    } finally {
+      this.#pool.end();
     }
   }
 }
-
 
 // Connect with a connection pool.
 

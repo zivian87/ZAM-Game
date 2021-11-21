@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ZAM-Devoe/ZAM-Game#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "dateformat": "^5.0.2",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "node": "^16.13.0",

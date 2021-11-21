@@ -1,24 +1,45 @@
-const command = require('../models/command.js');
+const command = require("../models/command.js");
 class commandController {
-    #model
-    #userMessage
-    #playerID
-    constructor(playerID) {
-        this.#playerID = playerID;
+  #model;
+  #userMessage;
+  #playerID;
+  #playerName;
+  #commands;
+  constructor(playerID, playerName) {
+    this.#playerID = playerID;
+    this.#playerName = playerName;
+    this.setCommandMap();
+  }
+  assignMessage(message) {
+    this.#userMessage = message;
+  }
+  determineType() {
+    var message = this.#userMessage.substring(1);
+    if (this.#commands.has(message)) {
+      return message;
+    } else {
+      return "invalid";
     }
-    assignMessage(message) {
-        this.#userMessage = message;
+  }
+  getMessage() {
+    var type = this.determineType();
+
+    if (type == "invalid") {
+      return "invalid";
+    } else {
+      this.#model = new command(
+        this.#userMessage,
+        type,
+        this.#playerID,
+        this.#playerName
+      );
+      return this.#model.getReponse();
     }
-    determineType() {
-        if (this.#userMessage.includes("gold")) {
-            return "gold";
-        }
-    }
-    getMessage() {
-        var type = this.determineType();
-        var model = new command(this.#userMessage, type, this.#playerID);
-        return model.getReponse();
-    }
+  }
+  setCommandMap() {
+    this.#commands = new Map();
+    this.#commands.set("begin", "Begins your adventure.");
+  }
 }
 
-module.exports = commandController
+module.exports = commandController;
