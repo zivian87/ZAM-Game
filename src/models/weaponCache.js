@@ -9,20 +9,46 @@ class weaponCache {
 
     generateCache() {
         // TODO: create dictionary
-        // this.#weapon.set(
-        //   "dagger",
-        //   createWeapon("dagger", "stab", 5, 200, "common", 25)
-        // );
+        this.#weapon.set(
+            1,
+            this.createWeapon(
+                1,
+                'sword',
+                'rare',
+                100,
+                200,
+                'A simple sword.',
+                true,
+                1,
+                'Weapon',
+                15
+            )
+        )
     }
 
-    createWeapon(inName, inType, inAtk, inCost, inRarity, inSellPrice) {
+    createWeapon(
+        inId,
+        inName,
+        inRarity,
+        inSellPrice,
+        inBuyPrice,
+        inDescription,
+        inCanCraft,
+        inQty,
+        inType,
+        inAttack
+    ) {
         weaponData = {
+            id: inId,
             name: inName,
-            type: inType,
-            atk: inAtk,
-            cost: inCost,
             rarity: inRarity,
             sellPrice: inSellPrice,
+            buyPrice: inBuyPrice,
+            description: inDescription,
+            canCraft: inCanCraft,
+            qty: inQty,
+            type: inType,
+            attack: inAttack,
         }
         return new weapon(weaponData)
     }

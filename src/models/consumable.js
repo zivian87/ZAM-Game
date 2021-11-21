@@ -1,21 +1,12 @@
-class consumable {
-    #name
-    #type
-    #rarity
-    #cost
-    #sellPrice
-    #description
+class consumable extends item {
+    #consumableType
+    #consumableEffect
 
     constructor(consumableData) {
-        this.#name = consumableData.name
-        this.#type = consumableData.type
-        this.#rarity = consumableData.rarity
-        this.#cost = consumableData.cost
-        this.#sellPrice = consumableData.sellPrice
-        this.#description = consumableData.descripition
+        super()
+        this.#consumableType = consumableData.consumableType
+        this.#consumableEffect = consumableData.consumableEffect
     }
-
-    createConsumable() {}
 }
 
 module.exports = consumable

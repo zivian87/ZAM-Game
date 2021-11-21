@@ -1,32 +1,32 @@
-const armor = require('./armor')
+const chest = require('./chest')
 
-class armorCache {
-    #armor
+class chestCache {
+    #chest
     constructor() {
-        this.#armor = new Map()
+        this.#chest = new Map()
         this.generateCache()
     }
 
     generateCache() {
         // TODO: create dictionary
-        this.#armor.set(
-            25,
-            this.createArmor(
-                25,
-                'Wooden Armor',
+        this.#chest.set(
+            10,
+            this.createChest(
+                10,
+                'Material Chest',
                 'common',
                 500,
                 1000,
-                'Crappy wooden armor that will keep you alive.. for now.',
-                true,
+                'A common chest that contains a variety of Raw Materials.',
+                false,
                 1,
-                'Armor',
-                50
+                'Chest',
+                'Raw Material'
             )
         )
     }
 
-    createArmor(
+    createChest(
         inId,
         inName,
         inRarity,
@@ -36,9 +36,9 @@ class armorCache {
         inCanCraft,
         inQty,
         inType,
-        inDefense
+        inChestType
     ) {
-        weaponData = {
+        chestData = {
             id: inId,
             name: inName,
             rarity: inRarity,
@@ -48,8 +48,8 @@ class armorCache {
             canCraft: inCanCraft,
             qty: inQty,
             type: inType,
-            defense: inDefense,
+            chestType: inChestType,
         }
-        return new armor(armorData)
+        return new chest(chestData)
     }
 }

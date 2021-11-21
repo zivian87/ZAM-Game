@@ -1,27 +1,30 @@
 const database = require('../databases/pg.js')
 
 class player {
-    UID
-    Name
-    CurrentStage
-    Items
-    JoinDate
-    MinutesPlayed
-    CurrentLevel
-    CurrentXP
-    Currency
-    PremiumCurrency
+    uid
+    name
+    stage
+    items
+    stats
+    energy
+    startDate
+    level
+    experience
+    currency
+    premiumCurrency
+
     constructor(discordID, discordName) {
-        this.UID = discordID
-        this.Name = discordName
+        this.uid = discordID
+        this.name = discordName
     }
+
     insert() {
         let query =
             'INSERT INTO public.players (uid, username, items, start_date, stats, energy, xp, currency, premium_currency)' +
             'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)'
         let params = [
-            this.UID,
-            this.Name,
+            this.uid,
+            this.name,
             null,
             new Date(),
             null,
@@ -35,7 +38,7 @@ class player {
     }
     async checkIfNew() {
         let query = 'SELECT * FROM public.players WHERE uid = $1'
-        let params = [this.UID]
+        let params = [this.uid]
         var db = new database()
         var results = await db.fetch(query, params)
 
