@@ -1,15 +1,15 @@
 const weapon = require('./weapon')
 
 class weaponCache {
-    #weapon
+    #weapons
     constructor() {
-        this.#weapon = new Map()
+        this.#weapons = new Map()
         this.generateCache()
     }
 
     generateCache() {
         // TODO: create dictionary
-        this.#weapon.set(
+        this.#weapons.set(
             1,
             this.createWeapon(
                 1,
@@ -52,4 +52,10 @@ class weaponCache {
         }
         return new weapon(weaponData)
     }
+    getWeapon(id)
+    {
+        return this.#weapons.get(id);
+    }
 }
+
+module.exports = weaponCache;

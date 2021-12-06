@@ -1,6 +1,7 @@
 require('dotenv').config() //initialize dotenv
 const commandController = require('../controllers/commandController.js')
 const playerController = require('../controllers/playerController.js')
+const gameController = require('../controllers/gameController.js')
 const Discord = require('discord.js') //import discord.js
 const { MessageEmbed } = require('discord.js')
 
@@ -16,7 +17,9 @@ const client = new Discord.Client({
 const { builtinModules } = require('module')
 
 class discordView {
-    #controller
+    #commandController
+    #playerController
+    #gameController
     #UID
     #Name
     constructor() {}
@@ -28,19 +31,27 @@ class discordView {
     async listenForInput() {
         client.on('messageCreate', async (msg) => {
             if (msg.content.startsWith('!')) {
-                this.setPlayerDiscordInfo(msg.author.id, msg.author.username)
-                this.createController()
-                var response = this.retrieveMessage(msg.content)
-                this.respond(response)
+                this.setPlayerDiscordInfo(msg.author.id, msg.author.username);
+                this.createControllers();
+                if(await this.#playerController.newPlayer() && (msg.content != "!begin"))
+                {
+                    this.respond("You have not yet begun your adventure. Type !begin to start your adventure.");
+                }
+                else{
+                    var response = this.retrieveMessage(msg.content);
+                    this.respond(response);
+                }             
             }
         })
     }
-    createController() {
-        this.#controller = new commandController(this.#UID, this.#Name)
+    createControllers() {
+        this.#commandController = new commandController(this.#UID, this.#Name); 
+        this.#playerController = new playerController(this.#UID, this.#Name);
+        this.#gameController = new gameController(this.#UID);
     }
     retrieveMessage(message) {
-        this.#controller.assignMessage(message)
-        var retrievedMessage = this.#controller.getMessage()
+        this.#commandController.assignMessage(message)
+        var retrievedMessage = this.#commandController.getMessage()
         if (retrievedMessage == 'invalid') {
             return 'Invalid command. Type !help for a list of valid commands'
         } else {
