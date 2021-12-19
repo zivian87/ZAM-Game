@@ -1,9 +1,9 @@
 class weapon extends item {
-    #attack
+    attack
 
     constructor(weaponData) {
-        super()
-        this.#attack = weaponData.attack
+        super(weaponData);
+        this.attack = weaponData.attack
     }
 }
 

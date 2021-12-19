@@ -1,21 +1,19 @@
- class stats{
+ class Stats{
     ATK;
     DEF;
     HP;
-    level;
     hitRate;
     criticalChance;
-    constructor(statsString){
-        var statsArray = this.getStatsFromString(statsString);
+    constructor(statsArray){
         this.ATK = statsArray[0];
         this.DEF = statsArray[1];
         this.HP = statsArray[2];
-        this.Level = statsArray[3];
-        this.hitRate = statsArray[4];
-        this.criticalChance = statsArray[5];        
+        this.hitRate = statsArray[3];
+        this.criticalChance = statsArray[4];        
     }
-    getStatsFromString(statsString)
-    {
-        return statsString.split(',');
+    getStatsArray(){
+        return  new Array[this.ATK, this.DEF, this.HP, this.hitRate, this.criticalChance];
     }
 }
+
+module.exports = Stats;

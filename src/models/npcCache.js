@@ -1,6 +1,6 @@
-const npc = require('./npc')
+const NPC = require('./NPC')
 
-class npcCache {
+class NPCCache {
     #npc
     constructor() {
         this.#npc = new Map()
@@ -16,19 +16,21 @@ class npcCache {
                 'Mr. Monster',
                 'Common',
                 'Mr. Monster is big and scary',
-                100
+                100,
+                1
             )
         )
     }
 
-    createNpc(inId, inName, inRarity, inDescription, inKillExperience) {
+    createNpc(inId, inName, inRarity, inDescription, inKillExperience, inStage) {
         npcData = {
             id: inId,
             name: inName,
             rarity: inRarity,
             description: inDescription,
             killExperience: inKillExperience,
+            state: inStage
         }
-        return new npc(npcData)
+        return new NPC(npcData)
     }
 }

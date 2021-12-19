@@ -10,9 +10,9 @@ class chestCache {
     generateCache() {
         // TODO: create dictionary
         this.#chest.set(
-            10,
+            90001,
             this.createChest(
-                10,
+                9001,
                 'Material Chest',
                 'common',
                 500,
@@ -21,7 +21,8 @@ class chestCache {
                 false,
                 1,
                 'Chest',
-                'Raw Material'
+                'Raw Material',
+                1
             )
         )
     }
@@ -36,7 +37,8 @@ class chestCache {
         inCanCraft,
         inQty,
         inType,
-        inChestType
+        inChestType,
+        inStage
     ) {
         chestData = {
             id: inId,
@@ -49,7 +51,17 @@ class chestCache {
             qty: inQty,
             type: inType,
             chestType: inChestType,
+            stage: inStage
         }
         return new chest(chestData)
     }
+    getChest(id) {
+        return this.#consumables.get(id)
+    }
+    getChests(consumableIDs) {
+        var consumables = new Array(consumableIDs.length)
+        consumableIDs.forEach((ID) => consumables.push(this.getconsumable(ID)))
+    }
 }
+
+module.exports = chestCache

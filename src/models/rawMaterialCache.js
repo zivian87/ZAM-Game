@@ -36,7 +36,8 @@ class rawMaterialsCache {
         inCanCraft,
         inQty,
         inType,
-        inResourceType
+        inResourceType,
+        inStage
     ) {
         rawMaterialData = {
             id: inId,
@@ -49,7 +50,18 @@ class rawMaterialsCache {
             qty: inQty,
             type: inType,
             resourceType: inResourceType,
+            stage: inStage
         }
         return new rawMaterial(rawMaterialData)
     }
+    getWawMaterial(id) {
+        return this.#rawMaterials.get(id)
+    }
+    getWawMaterials(rawMaterialIDs) {
+        var rawMaterials = new Array(rawMaterialIDs.length)
+        rawMaterialIDs.forEach((ID) => rawMaterials.push(this.getrawMaterial(ID)))
+    }
 }
+
+module.exports = rawMaterialsCache
+

@@ -22,6 +22,7 @@ class playerController {
             return false
         }
     }
+
 }
 
 module.exports = playerController

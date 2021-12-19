@@ -2,7 +2,7 @@ class chest extends item {
     #chestType
 
     constructor(chestData) {
-        super()
+        super(chestData)
         this.#chestType = chestData.chestType
     }
 }

@@ -10,9 +10,9 @@ class armorCache {
     generateCache() {
         // TODO: create dictionary
         this.#armor.set(
-            25,
+            2001,
             this.createArmor(
-                25,
+                20001,
                 'Wooden Armor',
                 'common',
                 500,
@@ -21,7 +21,8 @@ class armorCache {
                 true,
                 1,
                 'Armor',
-                50
+                50,
+                1
             )
         )
     }
@@ -36,9 +37,10 @@ class armorCache {
         inCanCraft,
         inQty,
         inType,
-        inDefense
+        inDefense,
+        inStage
     ) {
-        weaponData = {
+        armorData = {
             id: inId,
             name: inName,
             rarity: inRarity,
@@ -49,7 +51,18 @@ class armorCache {
             qty: inQty,
             type: inType,
             defense: inDefense,
+            stage: inStage
         }
         return new armor(armorData)
     }
+    getArmor(id) {
+        return this.#armors.get(id)
+    }
+    getarmors(armorIDs) {
+        var armors = new Array(armorIDs.length)
+        armorIDs.forEach((ID) => armors.push(this.getarmor(ID)))
+    }
 }
+
+module.exports = armorCache
+

@@ -1,44 +1,91 @@
-const weaponsCache = require('../models/weaponCache.js');
+const weaponCache = require('./weaponCache.js'),
+const armorCache = require('./armorCache.js'),
+const consumableCache = require('./consumableCache.js'),
+const rawMaterialsCache = require('./rawMaterialCache.js'),
+const chestCache = require('./chestCache.js'),
 
 class stageCache{
     #stageMap;
-    constructor(id)
+    constructor()
     {
-
+        this.generateCache();
     }
     generateCache() {
         // TODO: create dictionary
-        this.#npc.set(
-            109,
-            createNpc(
-                109,
-                'Mr. Monster',
-                'Common',
-                'Mr. Monster is big and scary',
-                100
+        this.#stageMap.set(
+            1,
+            createRawMaterial(
+                "Village",
+                1,
+                "Corrupt Rat",
+                this.getWeaponDrops(),
+                this.getArmorDrops(),
+                this.getConsumableDrops(),
+                this.getRawMaterialDrops(),
+                this.getChestDrops(),
+                this.getRecipeDrops(),
+                1,
+                this.getNPCS(),
+                1,
+                "Intro Message",
+                "Outro Message"
             )
         )
     }
 
-    generateStageData(inTheme, inBoss, inWeaponDrops, inArmorDrops, inConsumableDrops, inAverageLevel, inNPCs, inDifficultyTier, inIntroMessage, inOutroMessage) {
-        return {
+    createRawMaterial(
+        inTheme,
+        inID,
+        inBoss,
+        inWeaponDrops,
+        inArmorDrops,
+        inConsumableDrops,
+        inRawMaterialDrops,
+        inChestDrops,
+        inRecipeDrops,
+        inAverageLevel,
+        inNPCS,
+        inDifficultyTier,
+        inIntroMessage,
+        inOutroMessage,
+    ) {
+        rawMaterialData = {
             theme = inTheme,
+            id = inID,
             boss = inBoss,
             weaponDrops = inWeaponDrops,
             armorDrops = inArmorDrops,
+            rawMaterialDrops = inRawMaterialDrops,
+            chestDrops = inChestDrops,
             consumableDrops = inConsumableDrops,
-            recipeDrops = inAverageLevel,
-            npcs = inNPCs,
+            recipeDrops = inRecipeDrops,
+            averageLevel = inAverageLevel,
+            npcs = inNPCS,
             difficultyTier = inDifficultyTier,
             introMessage = inIntroMessage,
             outroMessage = inOutroMessage
         }
+        return new rawMaterial(rawMaterialData)
     }
-    getWeapons(weaponIDs){
-        var weapons = new Array(weaponIDs.length);
-        var allWeapons = new weaponsCache();
-        Array.forEach(ID =>
-            weapons.push(allWeapons.getWeapon(ID))
-        )
+    getWeaponDrops(){
+
+    }
+    getArmorDrops(){
+
+    }
+    getConsumableDrops(){
+
+    }
+    getRecipeDrops(){
+
+    }
+    getRawMaterialDrops(){
+
+    }
+    getChestDrops(){
+
+    }
+    getNPCS(){
+
     }
 }

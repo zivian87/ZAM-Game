@@ -10,7 +10,7 @@ class weaponCache {
     generateCache() {
         // TODO: create dictionary
         this.#weapons.set(
-            1,
+            10001,
             this.createWeapon(
                 1,
                 'sword',
@@ -36,7 +36,8 @@ class weaponCache {
         inCanCraft,
         inQty,
         inType,
-        inAttack
+        inAttack,
+        inStage
     ) {
         weaponData = {
             id: inId,
@@ -49,13 +50,17 @@ class weaponCache {
             qty: inQty,
             type: inType,
             attack: inAttack,
+            stage: inStage
         }
         return new weapon(weaponData)
     }
-    getWeapon(id)
-    {
-        return this.#weapons.get(id);
+    getWeapon(id) {
+        return this.#weapons.get(id)
+    }
+    getWeapons(weaponIDs) {
+        var weapons = new Array(weaponIDs.length)
+        weaponIDs.forEach((ID) => weapons.push(this.getWeapon(ID)))
     }
 }
 
-module.exports = weaponCache;
+module.exports = weaponCache

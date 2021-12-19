@@ -8,6 +8,7 @@
     _canCraft
     _qty
     _type
+    _stage
 
     constructor(itemData) {
         this._name = itemData.name
@@ -19,6 +20,7 @@
         this._canCraft = itemData.canCraft
         this._qty = itemData.qty
         this._type = itemData.type
+        this._stage = itemData.stage
     }
 }
 
