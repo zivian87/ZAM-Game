@@ -31,23 +31,26 @@ class discordView {
     async listenForInput() {
         client.on('messageCreate', async (msg) => {
             if (msg.content.startsWith('!')) {
-                this.setPlayerDiscordInfo(msg.author.id, msg.author.username);
-                this.createControllers();
-                if(await this.#playerController.newPlayer() && (msg.content != "!begin"))
-                {
-                    this.respond("You have not yet begun your adventure. Type !begin to start your adventure.");
+                this.setPlayerDiscordInfo(msg.author.id, msg.author.username)
+                this.createControllers()
+                if (
+                    (await this.#playerController.newPlayer()) &&
+                    msg.content != '!begin'
+                ) {
+                    this.respond(
+                        'You have not yet begun your adventure. Type !begin to start your adventure.'
+                    )
+                } else {
+                    var response = this.retrieveMessage(msg.content)
+                    this.respond(response)
                 }
-                else{
-                    var response = this.retrieveMessage(msg.content);
-                    this.respond(response);
-                }             
             }
         })
     }
     createControllers() {
-        this.#commandController = new commandController(this.#UID, this.#Name); 
-        this.#playerController = new playerController(this.#UID, this.#Name);
-        this.#gameController = new gameController(this.#UID);
+        this.#commandController = new commandController(this.#UID, this.#Name)
+        this.#playerController = new playerController(this.#UID, this.#Name)
+        this.#gameController = new gameController(this.#UID)
     }
     retrieveMessage(message) {
         this.#commandController.assignMessage(message)

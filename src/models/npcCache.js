@@ -22,14 +22,21 @@ class NPCCache {
         )
     }
 
-    createNpc(inId, inName, inRarity, inDescription, inKillExperience, inStage) {
+    createNpc(
+        inId,
+        inName,
+        inRarity,
+        inDescription,
+        inKillExperience,
+        inStage
+    ) {
         npcData = {
             id: inId,
             name: inName,
             rarity: inRarity,
             description: inDescription,
             killExperience: inKillExperience,
-            state: inStage
+            state: inStage,
         }
         return new NPC(npcData)
     }

@@ -51,7 +51,7 @@ class chestCache {
             qty: inQty,
             type: inType,
             chestType: inChestType,
-            stage: inStage
+            stage: inStage,
         }
         return new chest(chestData)
     }

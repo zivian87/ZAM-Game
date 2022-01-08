@@ -10,9 +10,9 @@ class consumableCache {
     generateCache() {
         // TODO: create dictionary
         this.#consumable.set(
-            30001,
+            74,
             this.createConsumable(
-                30001,
+                74,
                 'Healing Potion',
                 'common',
                 5,
@@ -22,8 +22,7 @@ class consumableCache {
                 1,
                 'Consumable',
                 'restorative',
-                20,
-                1
+                20
             )
         )
     }
@@ -39,8 +38,7 @@ class consumableCache {
         inQty,
         inType,
         inConsumableType,
-        inConsumableEffect,
-        inStage
+        inConsumableEffect
     ) {
         consumableData = {
             id: inId,
@@ -54,17 +52,7 @@ class consumableCache {
             type: inType,
             consumableType: inConsumableType,
             consumableEffect: inConsumableEffect,
-            stage: inStage,
         }
         return new consumable(consumableData)
     }
-    getConsumable(id) {
-        return this.#consumables.get(id)
-    }
-    getConsumables(consumableIDs) {
-        var consumables = new Array(consumableIDs.length)
-        consumableIDs.forEach((ID) => consumables.push(this.getconsumable(ID)))
-    }
 }
-
-module.exports = consumableCache

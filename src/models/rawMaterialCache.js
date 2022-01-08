@@ -50,7 +50,7 @@ class rawMaterialsCache {
             qty: inQty,
             type: inType,
             resourceType: inResourceType,
-            stage: inStage
+            stage: inStage,
         }
         return new rawMaterial(rawMaterialData)
     }
@@ -59,9 +59,10 @@ class rawMaterialsCache {
     }
     getWawMaterials(rawMaterialIDs) {
         var rawMaterials = new Array(rawMaterialIDs.length)
-        rawMaterialIDs.forEach((ID) => rawMaterials.push(this.getrawMaterial(ID)))
+        rawMaterialIDs.forEach((ID) =>
+            rawMaterials.push(this.getrawMaterial(ID))
+        )
     }
 }
 
 module.exports = rawMaterialsCache
-

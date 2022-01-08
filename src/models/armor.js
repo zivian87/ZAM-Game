@@ -2,8 +2,8 @@ class armor extends item {
     defense
 
     constructor(armorData) {
-        super(armorData);
-        this.defense = armorData.defense;
+        super(armorData)
+        this.defense = armorData.defense
     }
 }
 

@@ -15,14 +15,13 @@ class playerController {
     async newPlayer() {
         var newPlayer = await this.#model.checkIfNew()
         if (newPlayer) {
-            console.log("New Player");
+            console.log('New Player')
             return true
         } else {
-            console.log("Not a new Player")
+            console.log('Not a new Player')
             return false
         }
     }
-
 }
 
 module.exports = playerController
