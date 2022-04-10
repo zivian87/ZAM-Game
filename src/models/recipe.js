@@ -1,4 +1,5 @@
 class recipe extends item {
+<<<<<<< HEAD
     craftableItemName;
     craftableItemType;
     craftableItemID;
@@ -14,3 +15,14 @@ class recipe extends item {
 }
 
 module.exports = recipe
+=======
+    #requiredItems = []
+
+    constructor(recipeData) {
+        super()
+        this.#requiredItems = recipeData.requiredItems
+    }
+}
+
+module.exports = rawMaterial
+>>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b

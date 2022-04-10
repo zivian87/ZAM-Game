@@ -23,15 +23,30 @@ class NPCCache {
         )
     }
 
+<<<<<<< HEAD
     createNpc(inId, inName, inRarity, inDescription, inKillExperience, inStage, inIsBoss) {
+=======
+    createNpc(
+        inId,
+        inName,
+        inRarity,
+        inDescription,
+        inKillExperience,
+        inStage
+    ) {
+>>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b
         npcData = {
             id: inId,
             name: inName,
             rarity: inRarity,
             description: inDescription,
             killExperience: inKillExperience,
+<<<<<<< HEAD
             stage: inStage,
             isBoss: inIsBoss
+=======
+            state: inStage,
+>>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b
         }
         return new NPC(npcData)
     }

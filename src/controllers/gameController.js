@@ -1,13 +1,11 @@
-const { builtinModules } = require("module");
+const { builtinModules } = require('module')
 
-
-class gameController{
+class gameController {
     #playerID
     #player
-    constructor(playerID){
-        this.#playerID = playerID;
+    constructor(playerID) {
+        this.#playerID = playerID
     }
-
 }
 
-module.exports = gameController;
+module.exports = gameController

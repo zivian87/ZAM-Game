@@ -54,7 +54,7 @@ class consumableCache {
             type: inType,
             consumableType: inConsumableType,
             consumableEffect: inConsumableEffect,
-            stage: inStage
+            stage: inStage,
         }
         return new consumable(consumableData)
     }

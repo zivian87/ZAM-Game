@@ -50,7 +50,7 @@ class weaponCache {
             qty: inQty,
             type: inType,
             attack: inAttack,
-            stage: inStage
+            stage: inStage,
         }
         return new weapon(weaponData);
     }

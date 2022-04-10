@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class stage{
     theme;
     themeLevel;
@@ -83,7 +84,40 @@ class stage{
 
     getBoss(){
         return this.npcs.filter(npc => npc.isBoss == true)[0];
+=======
+class stage {
+    theme
+    id
+    boss
+    weaponDrops
+    armorDrops
+    consumableDrops
+    chestDrops
+    rawMaterialDrops
+    recipeDrops
+    averageLevel
+    npcs
+    difficultyTier
+    introMessage
+    outroMessage
+    constructor(id) {
+        this.id = id
     }
+    buildStage(stageData) {
+        this.theme = stageData.theme
+        this.boss = stageData.boss
+        this.weaponDrops = stageData.weaponDrops
+        this.armorDrops = stageData.armorDrops
+        this.consumableDrops = stageData.consumableDrops
+        this.recipeDrops = stageData.averageLevel
+        this.averageLevel = stageData.averageLevel
+        this.npcs = stageData.npcs
+        this.difficultyTier = stageData.difficultyTier
+        this.introMessage = stageData.introMessage
+        this.outroMessage = stageData.outroMessage
+>>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b
+    }
+    retrieveStageDataFromCache() {}
 }
 
-module.exports = stage;
+module.exports = stage

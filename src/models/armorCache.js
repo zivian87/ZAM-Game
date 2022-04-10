@@ -51,7 +51,7 @@ class armorCache {
             qty: inQty,
             type: inType,
             defense: inDefense,
-            stage: inStage
+            stage: inStage,
         }
         return new armor(armorData)
     }
@@ -72,4 +72,3 @@ class armorCache {
 }
 
 module.exports = armorCache
-

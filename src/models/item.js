@@ -1,4 +1,4 @@
- class item {
+class item {
     _id
     _name
     _rarity
