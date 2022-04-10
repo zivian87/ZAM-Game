@@ -68,9 +68,9 @@ class consumableCache {
         consumableIDs.forEach((ID) => consumables.push(this.getconsumable(ID)))
     }
 
-    getConsumablesByStage(stageID){
-        var valuesArray = new Array([...this.#consumable].values());
-        return valuesArray.filter(value => value.stageID == stageID);
+    getConsumablesByStage(stageID) {
+        var valuesArray = new Array([...this.#consumable].values())
+        return valuesArray.filter((value) => value.stageID == stageID)
     }
 }
 

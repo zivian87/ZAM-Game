@@ -65,9 +65,9 @@ class armorCache {
         armorIDs.forEach((ID) => armors.push(this.getarmor(ID)))
     }
 
-    getArmorsByStage(stageID){
-        var valuesArray = new Array([...this.#armor].values());
-        return valuesArray.filter(value => value.stageID == stageID);
+    getArmorsByStage(stageID) {
+        var valuesArray = new Array([...this.#armor].values())
+        return valuesArray.filter((value) => value.stageID == stageID)
     }
 }
 

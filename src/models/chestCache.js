@@ -65,9 +65,9 @@ class chestCache {
         consumableIDs.forEach((ID) => consumables.push(this.getconsumable(ID)))
     }
 
-    getChestsByStage(stageID){
-        var valuesArray = new Array([...this.#chest].values());
-        return valuesArray.filter(value => value.stageID == stageID);
+    getChestsByStage(stageID) {
+        var valuesArray = new Array([...this.#chest].values())
+        return valuesArray.filter((value) => value.stageID == stageID)
     }
 }
 

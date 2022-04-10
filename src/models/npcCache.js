@@ -23,37 +23,30 @@ class NPCCache {
         )
     }
 
-<<<<<<< HEAD
-    createNpc(inId, inName, inRarity, inDescription, inKillExperience, inStage, inIsBoss) {
-=======
     createNpc(
         inId,
         inName,
         inRarity,
         inDescription,
         inKillExperience,
-        inStage
+        inStage,
+        inIsBoss
     ) {
->>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b
         npcData = {
             id: inId,
             name: inName,
             rarity: inRarity,
             description: inDescription,
             killExperience: inKillExperience,
-<<<<<<< HEAD
             stage: inStage,
-            isBoss: inIsBoss
-=======
-            state: inStage,
->>>>>>> 01d7137d6a240f6df0944ecaeb96d50287a54b1b
+            isBoss: inIsBoss,
         }
         return new NPC(npcData)
     }
 
-    getNPCsByStage(stageID){
-        var valuesArray = new Array([...this.#npc].values());
-        return valuesArray.filter(value => value.stageID == stageID);
+    getNPCsByStage(stageID) {
+        var valuesArray = new Array([...this.#npc].values())
+        return valuesArray.filter((value) => value.stageID == stageID)
     }
 }
 

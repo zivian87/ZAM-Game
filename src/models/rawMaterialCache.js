@@ -81,9 +81,9 @@ class rawMaterialsCache {
         )
     }
 
-    getrawMaterialsByStage(stageID){
-        var valuesArray = new Array([...this.#rawMaterial].values());
-        return valuesArray.filter(value => value.stageID == stageID);
+    getrawMaterialsByStage(stageID) {
+        var valuesArray = new Array([...this.#rawMaterial].values())
+        return valuesArray.filter((value) => value.stageID == stageID)
     }
 }
 
