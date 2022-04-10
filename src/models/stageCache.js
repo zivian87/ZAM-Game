@@ -3,13 +3,18 @@ const armorCache = require('./armorCache.js'),
 const consumableCache = require('./consumableCache.js'),
 const rawMaterialsCache = require('./rawMaterialCache.js'),
 const chestCache = require('./chestCache.js'),
+const NPCcache = require('./NPCCache.js'),
+const recipeCache = require('./recipeCache.js'),
 
 class stageCache{
     #stageMap;
+
     constructor()
     {
+        this.#stageMap = new Map();
         this.generateCache();
     }
+
     generateCache() {
         // TODO: create dictionary
         this.#stageMap.set(
@@ -35,6 +40,7 @@ class stageCache{
 
     createRawMaterial(
         inTheme,
+        inThemeLevel,
         inID,
         inBoss,
         inWeaponDrops,
@@ -49,8 +55,9 @@ class stageCache{
         inIntroMessage,
         inOutroMessage,
     ) {
-        rawMaterialData = {
+        stageData = {
             theme = inTheme,
+            themeLevel = inThemeLevel,
             id = inID,
             boss = inBoss,
             weaponDrops = inWeaponDrops,
@@ -65,27 +72,38 @@ class stageCache{
             introMessage = inIntroMessage,
             outroMessage = inOutroMessage
         }
-        return new rawMaterial(rawMaterialData)
+        return new stage(stageData);
     }
-    getWeaponDrops(){
 
+    getStage(id){
+        return this.#stageMap.get(id);
     }
-    getArmorDrops(){
 
+    getWeaponDrops(stageID){
+        return weaponCache.getWeaponsByStage(stageID);
     }
-    getConsumableDrops(){
 
+    getArmorDrops(stageID){
+        return armorCache.getArmorsByStage(stageID);
     }
-    getRecipeDrops(){
 
+    getConsumableDrops(stageID){
+        return consumableCache.getConsumablesByStage(stageID);
     }
-    getRawMaterialDrops(){
 
+    getRecipeDrops(stageID){
+        return armorCache.getRecipesByStage(stageID);
     }
-    getChestDrops(){
 
+    getRawMaterialDrops(stageID){
+        return rawMaterialsCache.getRawMaterialsByStage(stageID);
     }
-    getNPCS(){
 
+    getChestDrops(stageID){
+        return chestCache.getChestsByStage(stageID);
+    }
+
+    getNPCS(stageID){
+        return NPCcache.getNPCsByStage(stageID);
     }
 }

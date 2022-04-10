@@ -52,15 +52,23 @@ class weaponCache {
             attack: inAttack,
             stage: inStage
         }
-        return new weapon(weaponData)
+        return new weapon(weaponData);
     }
+
     getWeapon(id) {
-        return this.#weapons.get(id)
+        return this.#weapons.get(id);
     }
+
     getWeapons(weaponIDs) {
-        var weapons = new Array(weaponIDs.length)
-        weaponIDs.forEach((ID) => weapons.push(this.getWeapon(ID)))
+        var weapons = new Array(weaponIDs.length);
+        weaponIDs.forEach((ID) => weapons.push(this.getWeapon(ID)));
     }
+
+    getWeaponsByStage(stageID){
+        var valuesArray = new Array([...this.#weapons].values());
+        return valuesArray.filter(value => value.stageID == stageID);
+    }
+
 }
 
 module.exports = weaponCache

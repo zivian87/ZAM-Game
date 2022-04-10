@@ -5,6 +5,10 @@ class rawMaterial extends item {
         super(rawMaterialData);
         this.#resourceType = rawMaterialData.resourceType;
     }
+
+    constructor(inQty, inMaterialID, inMaterialName) {
+        super(inQty, inMaterialID, inMaterialName);
+    }
 }
 
 module.exports = rawMaterial

@@ -24,6 +24,21 @@ class rawMaterialsCache {
                 'ore'
             )
         )
+        this.#rawMaterial.set(
+            1,
+            this.createRawMaterial(
+                1,
+                'Wood',
+                'Common',
+                1,
+                2,
+                'Wood from a tree.',
+                false,
+                1,
+                'Raw Material',
+                'Wood'
+            )
+        )
     }
 
     createRawMaterial(
@@ -54,12 +69,19 @@ class rawMaterialsCache {
         }
         return new rawMaterial(rawMaterialData)
     }
-    getWawMaterial(id) {
+
+    getrawMaterial(id) {
         return this.#rawMaterials.get(id)
     }
-    getWawMaterials(rawMaterialIDs) {
+
+    getrawMaterials(rawMaterialIDs) {
         var rawMaterials = new Array(rawMaterialIDs.length)
         rawMaterialIDs.forEach((ID) => rawMaterials.push(this.getrawMaterial(ID)))
+    }
+
+    getrawMaterialsByStage(stageID){
+        var valuesArray = new Array([...this.#rawMaterial].values());
+        return valuesArray.filter(value => value.stageID == stageID);
     }
 }
 

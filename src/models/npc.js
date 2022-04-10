@@ -6,6 +6,7 @@ class NPC {
     description;
     killExperience;
     stage;
+    isBoss;
 
     constructor(npcData) {
         this.id = npcData.id;
@@ -15,6 +16,7 @@ class NPC {
         this.killExperience = npcData.killExperience;
         this.stats = npcData.stats;
         this.stage = npcData.stage;
+        this.isBoss = npcData.isBoss;
     }
 }
 
